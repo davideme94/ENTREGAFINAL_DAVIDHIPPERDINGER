@@ -12,7 +12,7 @@ class Profile(models.Model):
     def __str__(self):
         return f'{self.user.username} Profile'
 
-# Señal para crear o actualizar automáticamente el perfil cuando un usuario es creado
+
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 

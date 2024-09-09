@@ -8,6 +8,6 @@ urlpatterns = [
     path('agregar-camiseta/', views.agregar_camiseta, name='agregar_camiseta'),
     path('agregar-botin/', views.agregar_botin, name='agregar_botin'),
     path('agregar-shorts/', views.agregar_shorts, name='agregar_shorts'),
-    path('busquedatipo/', views.busquedatipo, name='busquedatipo'),  # Definición de la URL para la búsqueda
+    path('busquedatipo/', views.busquedatipo, name='busquedatipo'),
     path('resultadobusqueda/', views.buscar, name='resultadobusqueda'),
 ]

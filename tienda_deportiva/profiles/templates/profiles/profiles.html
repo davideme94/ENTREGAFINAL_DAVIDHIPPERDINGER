@@ -11,7 +11,7 @@
     <div class="container">
         <h1>Perfil de {{ user.username }}</h1>
         
-        <!-- Mostrar la imagen de perfil si existe -->
+
         {% if user.profile.image %}
             <img src="{{ user.profile.image.url }}" alt="Imagen de Perfil" class="profile-image">
         {% else %}
@@ -21,13 +21,13 @@
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <div>
-                {{ u_form.as_p }}  <!-- Formulario para editar nombre de usuario y email -->
-                {{ p_form.as_p }}  <!-- Formulario para editar imagen, descripción, website -->
+                {{ u_form.as_p }}  
+                {{ p_form.as_p }}  
             </div>
 
             <h2>Cambiar Contraseña</h2>
             <div>
-                {{ password_form.as_p }}  <!-- Formulario para cambiar contraseña -->
+                {{ password_form.as_p }} 
             </div>
 
             <button type="submit">Guardar Cambios</button>

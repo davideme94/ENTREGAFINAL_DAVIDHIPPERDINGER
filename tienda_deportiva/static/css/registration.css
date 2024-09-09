@@ -1,4 +1,4 @@
-/* Estilos generales del cuerpo de la página */
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f0f8ff;
@@ -7,15 +7,15 @@ body {
     background-position: center;
     background-attachment: fixed;
     margin: 0;
-    padding: 20px 0; /* Añadir padding en la parte superior para evitar que se corte */
+    padding: 20px 0;
     display: flex;
     justify-content: center;
     height: 100vh;
     color: #333;
-    overflow-y: auto; /* Asegura que se pueda hacer scroll si es necesario */
+    overflow-y: auto; 
 }
 
-/* Contenedor principal del formulario */
+
 .container {
     background: rgba(255, 255, 255, 0.9);
     border-radius: 8px;
@@ -26,7 +26,7 @@ body {
     margin: 0 auto;
 }
 
-/* Estilos del título */
+
 h1 {
     text-align: center;
     color: #333;
@@ -34,21 +34,21 @@ h1 {
     font-size: 18px;
 }
 
-/* Estilos del formulario */
+
 form {
     display: flex;
     flex-direction: column;
-    gap: 10px; /* Espacio consistente entre los campos */
+    gap: 10px; 
 }
 
-/* Estilos de las etiquetas del formulario */
+
 form label {
     margin-bottom: 2px;
     font-weight: bold;
     font-size: 12px;
 }
 
-/* Estilos de los campos de entrada */
+
 form input {
     padding: 6px;
     border: 1px solid #ccc;
@@ -57,7 +57,7 @@ form input {
     font-size: 14px;
 }
 
-/* Estilos del botón de envío */
+
 form button {
     padding: 8px;
     border: none;
@@ -70,17 +70,17 @@ form button {
     margin-top: 5px;
 }
 
-/* Estilos del botón en estado hover */
+
 form button:hover {
     background-color: #0056b3;
 }
 
-/* Ocultar los mensajes de ayuda o descripciones largas */
+
 .helptext {
     display: none;
 }
 
-/* O si quieres ocultar solo esa sección específica, puedes usar algo más selectivo */
+
 fieldset:last-of-type .helptext {
     display: none;
 }

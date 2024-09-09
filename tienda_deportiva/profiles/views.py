@@ -18,9 +18,9 @@ def profile(request):
             u_form.save()
             p_form.save()
             password_form.save()
-            update_session_auth_hash(request, password_form.user)  # Mantiene la sesión activa después de cambiar la contraseña
+            update_session_auth_hash(request, password_form.user) 
             messages.success(request, '¡Tu perfil ha sido actualizado con éxito!')
-            return redirect('profile')  # Redirigir a la página de perfil después de guardar
+            return redirect('profile') 
     else:
         u_form = UserUpdateForm(instance=request.user)
         p_form = UserProfileForm(instance=request.user.profile)

@@ -12,4 +12,4 @@ class Message(models.Model):
         return f'Message from {self.sender} to {self.receiver}'
 
     class Meta:
-        ordering = ['-timestamp']  # Los mensajes se ordenarán por la fecha más reciente
+        ordering = ['-timestamp']  

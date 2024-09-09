@@ -1,8 +1,8 @@
-/* Estilos generales del cuerpo de la página */
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f0f8ff;
-    background-image: url('/static/images/messipuerta.jpg'); /* Imagen de Messi puerta */
+    background-image: url('/static/images/messipuerta.jpg'); 
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -15,9 +15,8 @@ body {
     color: #333;
 }
 
-/* Contenedor principal del formulario */
 .container {
-    background: rgba(255, 255, 255, 0.9); /* Fondo semitransparente */
+    background: rgba(255, 255, 255, 0.9); 
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 20px;
@@ -26,7 +25,7 @@ body {
     margin: 0 auto;
 }
 
-/* Estilos del título */
+
 h1 {
     text-align: center;
     color: #333;
@@ -35,20 +34,20 @@ h1 {
     font-weight: bold;
 }
 
-/* Estilos del formulario */
+
 form {
     display: flex;
     flex-direction: column;
 }
 
-/* Estilos de las etiquetas del formulario */
+
 form label {
     margin-bottom: 5px;
     font-weight: bold;
     font-size: 14px;
 }
 
-/* Estilos de los campos de entrada */
+
 form input {
     padding: 10px;
     border: 1px solid #ccc;
@@ -59,7 +58,7 @@ form input {
     box-sizing: border-box;
 }
 
-/* Estilos del botón de envío */
+
 form button {
     padding: 10px;
     border: none;
@@ -72,12 +71,12 @@ form button {
     width: 100%;
 }
 
-/* Estilos del botón en estado hover */
+
 form button:hover {
     background-color: #0056b3;
 }
 
-/* Texto pequeño de ayuda o enlaces */
+
 form .help-text {
     font-size: 12px;
     text-align: center;

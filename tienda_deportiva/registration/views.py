@@ -8,7 +8,7 @@ def signup(request):
         if form.is_valid():
             form.save()
             messages.success(request, "¡Cuenta creada exitosamente!")
-            return redirect('homepage')  # Cambia esto a la URL de tu página de inicio
+            return redirect('homepage') 
         else:
             messages.error(request, "Error al crear la cuenta. Asegúrate de que todos los campos sean correctos.")
     else:

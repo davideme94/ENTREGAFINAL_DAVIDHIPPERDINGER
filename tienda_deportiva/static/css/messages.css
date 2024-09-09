@@ -1,4 +1,4 @@
-/* Estilo general del cuerpo */
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f4f7f9;
@@ -11,7 +11,7 @@ body {
     height: 100vh;
 }
 
-/* Contenedor principal */
+
 .container {
     background: rgba(255, 255, 255, 0.9);
     border-radius: 8px;
@@ -22,7 +22,7 @@ body {
     margin: 20px auto;
 }
 
-/* Estilos para la bandeja de entrada */
+
 h1 {
     text-align: center;
     color: #333;
@@ -56,7 +56,7 @@ ul li small {
     font-size: 12px;
 }
 
-/* Botones de navegación */
+
 nav a {
     color: #fff;
     background-color: #007bff;
@@ -71,7 +71,7 @@ nav a:hover {
     background-color: #0056b3;
 }
 
-/* Estilos para el formulario de envío de mensajes */
+
 form {
     display: flex;
     flex-direction: column;
@@ -103,7 +103,7 @@ form button:hover {
     background-color: #0056b3;
 }
 
-/* Mensaje de confirmación o error */
+
 .message {
     background-color: #e2e3e5;
     border-radius: 5px;
@@ -112,7 +112,7 @@ form button:hover {
     font-size: 14px;
 }
 
-/* Footer */
+
 footer {
     margin-top: 20px;
     text-align: center;
