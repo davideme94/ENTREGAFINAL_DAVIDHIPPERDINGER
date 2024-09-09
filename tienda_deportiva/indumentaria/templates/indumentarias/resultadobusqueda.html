@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Resultados de la Búsqueda</title>
+    <link rel="stylesheet" href="{% static 'css/resultados.css' %}">
+</head>
+<body>
+    <h1>Resultados de la Búsqueda para "{{ tipo }}"</h1>
+
+    {% if resultados %}
+        <ul>
+            {% for item in resultados %}
+                <li>
+                    {% if item.image %}
+                        <img src="{{ item.image.url }}" alt="Imagen de {{ item.name }}">
+                    {% endif %}
+                    <div>
+                        <p><strong>{{ item.name }}</strong></p>
+                        <p>Precio: {{ item.precio }}</p>
+                        <p>Talle: {{ item.talle }}</p>
+                        <p>Vendedor: {{ item.nombre_vendedor }}</p>  <!-- Cambiado a nombre_vendedor -->
+                        <p>Teléfono: {{ item.numero_contacto }}</p>  <!-- Cambiado a numero_contacto -->
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No se encontraron resultados para "{{ tipo }}".</p>
+    {% endif %}
+</body>
+</html>
+

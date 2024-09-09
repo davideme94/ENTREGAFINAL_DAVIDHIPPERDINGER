@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    INDUMENTARIA
+{% endblock %}
+
+{% block content %}
+    <section>
+        <h1>INDUMENTARIA A LA VENTA</h1>
+        {% for post in posts %}
+            <article>
+                <h2>{{ post.name }}</h2> 
+                <img class="image" src="{{ post.image.url }}" alt="{{ post.name }}"/>
+                <p>Talle: {{ post.talle }}</p> 
+                <p>Precio: <span class="price">{{ post.precio }}</span> pesitos</p> 
+                <p>Tipo: {{ post.tipo }}</p> 
+                <p>Vendedor: {{ post.nombre_vendedor }}</p>  <!-- Nombre del vendedor -->
+                <p>Contacto: {{ post.numero_contacto }}</p>  <!-- Número de contacto -->
+            </article>
+        {% endfor %}
+    </section>
+    
+    <section class="button-container">
+        <a href="/indumentaria/agregar-camiseta"><button>👟AGREGAR CAMISETA👟</button></a>
+        <a href="/indumentaria/agregar-botin"><button>👢AGREGAR BOTINES👢</button></a>
+        <a href="/indumentaria/agregar-shorts"><button>🩳AGREGAR SHORTS🩳</button></a>
+    </section>
+
+{% endblock %}

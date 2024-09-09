@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Cuenta</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/registration.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Crear Cuenta</h1>
+        <form method="post">
+            {% csrf_token %}
+            <!-- Renderiza solo los campos que deseas -->
+            <div>
+                {{ form.username.label_tag }} <!-- Etiqueta del campo -->
+                {{ form.username }} <!-- Campo de texto para nombre de usuario -->
+                {{ form.username.errors }} <!-- Mostrar errores, si los hay -->
+            </div>
+
+            <div>
+                {{ form.email.label_tag }} <!-- Etiqueta del campo de correo -->
+                {{ form.email }} <!-- Campo de texto para correo electrónico -->
+                {{ form.email.errors }} <!-- Mostrar errores, si los hay -->
+            </div>
+
+            <div>
+                {{ form.password1.label_tag }} <!-- Etiqueta del campo de contraseña -->
+                {{ form.password1 }} <!-- Campo de contraseña -->
+                {{ form.password1.errors }} <!-- Mostrar errores, si los hay -->
+            </div>
+
+            <div>
+                {{ form.password2.label_tag }} <!-- Etiqueta para confirmar la contraseña -->
+                {{ form.password2 }} <!-- Campo para confirmar la contraseña -->
+                {{ form.password2.errors }} <!-- Mostrar errores, si los hay -->
+            </div>
+
+            <button type="submit">Registrarse</button>
+        </form>
+    </div>
+</body>
+</html>

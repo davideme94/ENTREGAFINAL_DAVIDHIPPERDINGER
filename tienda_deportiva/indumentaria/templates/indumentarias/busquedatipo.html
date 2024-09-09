@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Búsqueda de Indumentaria</title>
+    <link rel="stylesheet" href="{% static 'css/busqueda.css' %}">
+</head>
+<body>
+    
+    <h1>Buscar Indumentaria por Tipo</h1>
+    <form action="{% url 'resultadobusqueda' %}" method="get">
+        <label for="tipo">Tipo de Indumentaria:</label>
+        <input type="text" name="tipo" id="tipo">
+        <button type="submit">Buscar</button>
+    </form>
+</body>
+</html>

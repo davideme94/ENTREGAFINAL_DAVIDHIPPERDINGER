@@ -1,0 +1,124 @@
+/* Estilos generales del cuerpo de la página */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f8ff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #333;
+}
+
+/* Contenedor principal del perfil */
+.container {
+    background: rgba(255, 255, 255, 0.95); /* Fondo blanco semitransparente */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 100%;
+    max-width: 600px;
+    margin: 20px;
+}
+
+/* Estilos del título del perfil */
+h1 {
+    text-align: center;
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Estilos del formulario */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Estilos de los campos del formulario */
+form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+form input,
+form textarea,
+form select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Estilo específico para el área de texto (descripción) */
+form textarea {
+    resize: vertical; /* Permitir que el área de texto cambie de tamaño verticalmente */
+    min-height: 100px;
+}
+
+/* Estilos para el botón de guardar */
+form button {
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos para las imágenes de perfil */
+.profile-image {
+    display: block;
+    margin: 0 auto 20px auto;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+}
+
+/* Enlaces para cambiar contraseña o eliminar cuenta */
+.profile-links {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.profile-links a {
+    text-decoration: none;
+    color: #007bff;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+.profile-links a:hover {
+    color: #0056b3;
+}
+
+/* Mensajes de éxito o error */
+.messages {
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.messages.success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.messages.error {
+    background-color: #f8d7da;
+    color: #721c24;
+}

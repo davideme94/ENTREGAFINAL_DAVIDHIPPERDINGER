@@ -1,0 +1,74 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background-color: black;
+    background-image: url('/static/images/imagen1.jpg'); 
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-position: center center; 
+    background-attachment: fixed; 
+    color: black;
+    font-size: 2rem;
+    display: flex;
+    flex-flow: column;
+    place-content: center;
+}
+
+nav {
+    padding: 1rem;
+    background-color: #44B78B;
+    color: white;
+    font-size: 2rem;
+    position: relative;
+}
+
+main {
+    flex-grow: 1;
+    display: grid;
+    place-content: center;
+}
+
+h1 {
+    text-align: center;
+    color: black; 
+    text-shadow: 2px 2px 4px whitesmoke, -2px -2px 4px whitesmoke; 
+    text-decoration: underline;
+}
+
+p {
+    text-align: center;
+    color: black; 
+    text-shadow: 2px 2px 4px whitesmoke, -2px -2px 4px whitesmoke; 
+}
+
+h2 {
+    font-weight: bold; 
+    text-align: center; 
+    color: black;
+    margin: 1rem 0; 
+    text-shadow: 2px 2px 4px white, -2px -2px 4px white; 
+}
+
+a {
+    text-decoration: none;
+    color: #81dbb8;
+}
+
+a:hover {
+    opacity: .85;
+}
+
+/* Estilo para el mensaje de usuario logueado */
+.logged-in-message {
+    margin-left: 15px;  /* Separación entre el enlace "MI PERFIL" y el mensaje */
+    color: white;
+    font-size: 1.2rem;
+    vertical-align: middle;
+    display: inline-block;
+    padding-left: 10px;
+}
