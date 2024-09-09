@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'registration',
     'login',
     'profiles',
+    'user_messages',
     
 
 ]

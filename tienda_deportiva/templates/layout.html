@@ -24,9 +24,13 @@
             <a href="{% url 'login' %}">✍️INICIAR SESIÓN✍️</a>
         {% endif %}
 
-        <!-- Mostrar "MI PERFIL" y "CERRAR SESIÓN" solo si el usuario está autenticado -->
+        <!-- Mostrar "MI PERFIL", "MENSAJES" y "CERRAR SESIÓN" solo si el usuario está autenticado -->
         {% if user.is_authenticated %}
-            - <a href="{% url 'profile' %}">👤MI PERFIL👤</a>
+            - <a href="{% url 'profile' %}">👤MI PERFIL👤</a> -
+            <!-- Enlace a la bandeja de entrada de mensajes -->
+            <a href="{% url 'inbox' %}">📩MENSAJES📩</a> -
+            <!-- Enlace para enviar un mensaje nuevo -->
+            <a href="{% url 'send_message' %}">📝ENVIAR MENSAJE📝</a> -
             <!-- Mostrar el nombre de usuario si está autenticado -->
             <span class="logged-in-message"><strong>{{ user.username }}</strong></span>
             <!-- Botón para cerrar sesión -->

@@ -14,6 +14,7 @@ urlpatterns = [
     path('login/', include('login.urls')),
     path('profile/', include('profiles.urls')),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
+    path('messages/', include('user_messages.urls')),
     
 ]
 
