@@ -20,10 +20,12 @@
         {% endfor %}
     </section>
     
-    <section class="button-container">
-        <a href="/indumentaria/agregar-camiseta"><button>👟AGREGAR CAMISETA👟</button></a>
-        <a href="/indumentaria/agregar-botin"><button>👢AGREGAR BOTINES👢</button></a>
-        <a href="/indumentaria/agregar-shorts"><button>🩳AGREGAR SHORTS🩳</button></a>
-    </section>
+    {% if user.is_authenticated %}
+        <section class="button-container">
+            <a href="/indumentaria/agregar-camiseta"><button>👟AGREGAR CAMISETA👟</button></a>
+            <a href="/indumentaria/agregar-botin"><button>👢AGREGAR BOTINES👢</button></a>
+            <a href="/indumentaria/agregar-shorts"><button>🩳AGREGAR SHORTS🩳</button></a>
+        </section>
+    {% endif %}
 
 {% endblock %}
