@@ -13,14 +13,14 @@
     </header>
 
     <main>
-        <!-- Formulario para editar la camiseta -->
+        
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.as_p }}
             <button type="submit">Guardar Cambios</button>
         </form>
 
-        <!-- Botón para cancelar la edición y volver a la lista -->
+        
         <a href="{% url 'indumentaria_lista' %}"><button>Cancelar</button></a>
     </main>
 

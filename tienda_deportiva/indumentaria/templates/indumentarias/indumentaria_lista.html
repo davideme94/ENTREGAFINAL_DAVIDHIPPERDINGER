@@ -17,17 +17,17 @@
                 <p>Vendedor: {{ post.nombre_vendedor }}</p>
                 <p>Contacto: {{ post.numero_contacto }}</p>
 
-                <!-- Mostrar botones solo si el usuario es el propietario o un superusuario -->
+                
                 {% if user == post.usuario or user.is_superuser %}
                     <div class="action-buttons">
-                        <!-- Verifica si el artículo es una camiseta, botín o short -->
+                        
                         {% if post.tipo|lower == "camiseta" %}
-                            <!-- Botón para editar la camiseta -->
+                            
                             <a href="{% url 'editar_camiseta' post.id %}">
                                 <button>✏️ Editar</button>
                             </a>
 
-                            <!-- Botón para eliminar la camiseta -->
+                            
                             <form action="{% url 'eliminar_camiseta' post.id %}" method="POST" style="display:inline;">
                                 {% csrf_token %}
                                 <button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este artículo?');">
@@ -35,12 +35,12 @@
                                 </button>
                             </form>
                         {% elif post.tipo|lower == "botin" %}
-                            <!-- Botón para editar el botín -->
+                            
                             <a href="{% url 'editar_botin' post.id %}">
                                 <button>✏️ Editar</button>
                             </a>
 
-                            <!-- Botón para eliminar el botín -->
+                            
                             <form action="{% url 'eliminar_botin' post.id %}" method="POST" style="display:inline;">
                                 {% csrf_token %}
                                 <button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este artículo?');">
@@ -48,12 +48,12 @@
                                 </button>
                             </form>
                         {% elif post.tipo|lower == "short" %}
-                            <!-- Botón para editar el short -->
+                            
                             <a href="{% url 'editar_short' post.id %}">
                                 <button>✏️ Editar</button>
                             </a>
 
-                            <!-- Botón para eliminar el short -->
+                            
                             <form action="{% url 'eliminar_short' post.id %}" method="POST" style="display:inline;">
                                 {% csrf_token %}
                                 <button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este artículo?');">
@@ -67,7 +67,7 @@
         {% endfor %}
     </section>
     
-    <!-- Sección para agregar nuevos artículos (solo visible para usuarios autenticados) -->
+    
     {% if user.is_authenticated %}
         <section class="button-container">
             <a href="{% url 'agregar_camiseta' %}"><button>👕 AGREGAR CAMISETA 👕</button></a>
