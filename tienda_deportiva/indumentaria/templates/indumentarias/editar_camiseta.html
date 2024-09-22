@@ -1,11 +1,31 @@
-{% extends "base.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Camiseta</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Editar Camiseta</h1>
+    </header>
 
-{% block content %}
-    <h1>Editar Camiseta</h1>
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Guardar Cambios</button>
-    </form>
-    <a href="{% url 'indumentaria_lista' %}">Cancelar</a>
-{% endblock %}
+    <main>
+        <!-- Formulario para editar la camiseta -->
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Guardar Cambios</button>
+        </form>
+
+        <!-- Botón para cancelar la edición y volver a la lista -->
+        <a href="{% url 'indumentaria_lista' %}"><button>Cancelar</button></a>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Compra y Venta de Indumentaria. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
