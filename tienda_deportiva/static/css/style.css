@@ -63,7 +63,6 @@ a:hover {
     opacity: .85;
 }
 
-
 .logged-in-message {
     margin-left: 15px;  
     color: white;
@@ -71,4 +70,13 @@ a:hover {
     vertical-align: middle;
     display: inline-block;
     padding-left: 10px;
+}
+
+/* Estilo para las imágenes */
+.image {
+    width: 50%;        /* La imagen ocupará el 50% del ancho del contenedor */
+    height: auto;      /* Mantiene la proporción de la imagen */
+    display: block;    /* Asegura que la imagen sea tratada como un bloque */
+    margin: 0 auto;    /* Centra la imagen horizontalmente */
+    max-height: 200px; /* Limita la altura máxima a la mitad del valor anterior */
 }
