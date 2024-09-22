@@ -1,7 +1,8 @@
-from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.shortcuts import render, redirect, get_object_or_404
+from django.http import HttpResponse, HttpResponseForbidden
 from .models import Camiseta, Short, Botin
 from .forms import CamisetaForm, BotinForm, ShortsForm
+from django.contrib.auth.decorators import login_required
 
 # Vista para mostrar todas las indumentarias
 def indumentaria_lista(request):
@@ -14,37 +15,136 @@ def indumentaria_lista(request):
     return render(request, 'indumentarias/indumentaria_lista.html', {"posts": todas_las_indumentarias})
 
 # Vista para agregar una camiseta
+@login_required
 def agregar_camiseta(request):
     if request.method == 'POST':
         form = CamisetaForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            camiseta = form.save(commit=False)
+            camiseta.usuario = request.user  # Asocia la camiseta con el usuario autenticado
+            camiseta.save()
             return redirect('indumentaria_lista')  # Redirige a la lista de indumentaria
     else:
         form = CamisetaForm()
     return render(request, 'indumentarias/agregar_camiseta.html', {'form': form})
 
 # Vista para agregar un botín
+@login_required
 def agregar_botin(request):
     if request.method == 'POST':
         form = BotinForm(request.POST, request.FILES)  
         if form.is_valid():
-            form.save()
+            botin = form.save(commit=False)
+            botin.usuario = request.user  # Asocia el botín con el usuario autenticado
+            botin.save()
             return redirect('indumentaria_lista')  # Redirige a la lista de indumentaria
     else:
         form = BotinForm()
     return render(request, 'indumentarias/agregar_botin.html', {'form': form})
 
 # Vista para agregar un short
+@login_required
 def agregar_shorts(request):
     if request.method == 'POST':
         form = ShortsForm(request.POST, request.FILES)  
         if form.is_valid():
-            form.save()
+            short = form.save(commit=False)
+            short.usuario = request.user  # Asocia el short con el usuario autenticado
+            short.save()
             return redirect('indumentaria_lista')  # Redirige a la lista de indumentaria
     else:
         form = ShortsForm()
     return render(request, 'indumentarias/agregar_shorts.html', {'form': form})
+
+# Vista para editar una camiseta
+@login_required
+def editar_camiseta(request, id):
+    camiseta = get_object_or_404(Camiseta, id=id)
+    if request.user != camiseta.usuario and not request.user.is_superuser:
+        return HttpResponseForbidden("No tienes permiso para editar este artículo.")
+    
+    if request.method == 'POST':
+        form = CamisetaForm(request.POST, request.FILES, instance=camiseta)
+        if form.is_valid():
+            form.save()
+            return redirect('indumentaria_lista')
+    else:
+        form = CamisetaForm(instance=camiseta)
+    
+    return render(request, 'indumentarias/editar_camiseta.html', {'form': form})
+
+# Vista para editar un botín
+@login_required
+def editar_botin(request, id):
+    botin = get_object_or_404(Botin, id=id)
+    if request.user != botin.usuario and not request.user.is_superuser:
+        return HttpResponseForbidden("No tienes permiso para editar este artículo.")
+    
+    if request.method == 'POST':
+        form = BotinForm(request.POST, request.FILES, instance=botin)
+        if form.is_valid():
+            form.save()
+            return redirect('indumentaria_lista')
+    else:
+        form = BotinForm(instance=botin)
+    
+    return render(request, 'indumentarias/editar_botin.html', {'form': form})
+
+# Vista para editar un short
+@login_required
+def editar_short(request, id):
+    short = get_object_or_404(Short, id=id)
+    if request.user != short.usuario and not request.user.is_superuser:
+        return HttpResponseForbidden("No tienes permiso para editar este artículo.")
+    
+    if request.method == 'POST':
+        form = ShortsForm(request.POST, request.FILES, instance=short)
+        if form.is_valid():
+            form.save()
+            return redirect('indumentaria_lista')
+    else:
+        form = ShortsForm(instance=short)
+    
+    return render(request, 'indumentarias/editar_short.html', {'form': form})
+
+# Vista para eliminar una camiseta
+@login_required
+def eliminar_camiseta(request, id):
+    camiseta = get_object_or_404(Camiseta, id=id)
+    if request.user != camiseta.usuario and not request.user.is_superuser:
+        return HttpResponseForbidden("No tienes permiso para eliminar este artículo.")
+    
+    if request.method == 'POST':
+        camiseta.delete()
+        return redirect('indumentaria_lista')
+    
+    return render(request, 'indumentarias/confirmar_eliminar.html', {'indumentaria': camiseta})
+
+# Vista para eliminar un botín
+@login_required
+def eliminar_botin(request, id):
+    botin = get_object_or_404(Botin, id=id)
+    if request.user != botin.usuario and not request.user.is_superuser:
+        return HttpResponseForbidden("No tienes permiso para eliminar este artículo.")
+    
+    if request.method == 'POST':
+        botin.delete()
+        return redirect('indumentaria_lista')
+    
+    return render(request, 'indumentarias/confirmar_eliminar.html', {'indumentaria': botin})
+
+# Vista para eliminar un short
+@login_required
+def eliminar_short(request, id):
+    short = get_object_or_404(Short, id=id)
+    if request.user != short.usuario and not request.user.is_superuser:
+        return HttpResponseForbidden("No tienes permiso para eliminar este artículo.")
+    
+    if request.method == 'POST':
+        short.delete()
+        return redirect('indumentaria_lista')
+    
+    return render(request, 'indumentarias/confirmar_eliminar.html', {'indumentaria': short})
 
 # Vista para mostrar la búsqueda por tipo
 def busquedatipo(request):
