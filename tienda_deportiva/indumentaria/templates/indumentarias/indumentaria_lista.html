@@ -20,18 +20,47 @@
                 <!-- Mostrar botones solo si el usuario es el propietario o un superusuario -->
                 {% if user == post.usuario or user.is_superuser %}
                     <div class="action-buttons">
-                        <!-- Botón para editar el artículo -->
-                        <a href="{% url 'editar_camiseta' post.id %}">
-                            <button>✏️ Editar</button>
-                        </a>
+                        <!-- Verifica si el artículo es una camiseta, botín o short -->
+                        {% if post.tipo|lower == "camiseta" %}
+                            <!-- Botón para editar la camiseta -->
+                            <a href="{% url 'editar_camiseta' post.id %}">
+                                <button>✏️ Editar</button>
+                            </a>
 
-                        <!-- Botón para eliminar el artículo -->
-                        <form action="{% url 'eliminar_camiseta' post.id %}" method="POST" style="display:inline;">
-                            {% csrf_token %}
-                            <button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este artículo?');">
-                                🗑️ Eliminar
-                            </button>
-                        </form>
+                            <!-- Botón para eliminar la camiseta -->
+                            <form action="{% url 'eliminar_camiseta' post.id %}" method="POST" style="display:inline;">
+                                {% csrf_token %}
+                                <button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este artículo?');">
+                                    🗑️ Eliminar
+                                </button>
+                            </form>
+                        {% elif post.tipo|lower == "botin" %}
+                            <!-- Botón para editar el botín -->
+                            <a href="{% url 'editar_botin' post.id %}">
+                                <button>✏️ Editar</button>
+                            </a>
+
+                            <!-- Botón para eliminar el botín -->
+                            <form action="{% url 'eliminar_botin' post.id %}" method="POST" style="display:inline;">
+                                {% csrf_token %}
+                                <button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este artículo?');">
+                                    🗑️ Eliminar
+                                </button>
+                            </form>
+                        {% elif post.tipo|lower == "short" %}
+                            <!-- Botón para editar el short -->
+                            <a href="{% url 'editar_short' post.id %}">
+                                <button>✏️ Editar</button>
+                            </a>
+
+                            <!-- Botón para eliminar el short -->
+                            <form action="{% url 'eliminar_short' post.id %}" method="POST" style="display:inline;">
+                                {% csrf_token %}
+                                <button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este artículo?');">
+                                    🗑️ Eliminar
+                                </button>
+                            </form>
+                        {% endif %}
                     </div>
                 {% endif %}
             </article>
@@ -41,9 +70,9 @@
     <!-- Sección para agregar nuevos artículos (solo visible para usuarios autenticados) -->
     {% if user.is_authenticated %}
         <section class="button-container">
-            <a href="/indumentaria/agregar-camiseta"><button>👕 AGREGAR CAMISETA 👕</button></a>
-            <a href="/indumentaria/agregar-botin"><button>👢 AGREGAR BOTINES 👢</button></a>
-            <a href="/indumentaria/agregar-shorts"><button>🩳 AGREGAR SHORTS 🩳</button></a>
+            <a href="{% url 'agregar_camiseta' %}"><button>👕 AGREGAR CAMISETA 👕</button></a>
+            <a href="{% url 'agregar_botin' %}"><button>👢 AGREGAR BOTINES 👢</button></a>
+            <a href="{% url 'agregar_shorts' %}"><button>🩳 AGREGAR SHORTS 🩳</button></a>
         </section>
     {% endif %}
 
