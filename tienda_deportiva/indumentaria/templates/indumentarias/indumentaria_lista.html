@@ -16,15 +16,34 @@
                 <p>Tipo: {{ post.tipo }}</p> 
                 <p>Vendedor: {{ post.nombre_vendedor }}</p>
                 <p>Contacto: {{ post.numero_contacto }}</p>
+
+                <!-- Mostrar botones solo si el usuario es el propietario o un superusuario -->
+                {% if user == post.usuario or user.is_superuser %}
+                    <div class="action-buttons">
+                        <!-- Botón para editar el artículo -->
+                        <a href="{% url 'editar_camiseta' post.id %}">
+                            <button>✏️ Editar</button>
+                        </a>
+
+                        <!-- Botón para eliminar el artículo -->
+                        <form action="{% url 'eliminar_camiseta' post.id %}" method="POST" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" onclick="return confirm('¿Estás seguro de que deseas eliminar este artículo?');">
+                                🗑️ Eliminar
+                            </button>
+                        </form>
+                    </div>
+                {% endif %}
             </article>
         {% endfor %}
     </section>
     
+    <!-- Sección para agregar nuevos artículos (solo visible para usuarios autenticados) -->
     {% if user.is_authenticated %}
         <section class="button-container">
-            <a href="/indumentaria/agregar-camiseta"><button>👟AGREGAR CAMISETA👟</button></a>
-            <a href="/indumentaria/agregar-botin"><button>👢AGREGAR BOTINES👢</button></a>
-            <a href="/indumentaria/agregar-shorts"><button>🩳AGREGAR SHORTS🩳</button></a>
+            <a href="/indumentaria/agregar-camiseta"><button>👕 AGREGAR CAMISETA 👕</button></a>
+            <a href="/indumentaria/agregar-botin"><button>👢 AGREGAR BOTINES 👢</button></a>
+            <a href="/indumentaria/agregar-shorts"><button>🩳 AGREGAR SHORTS 🩳</button></a>
         </section>
     {% endif %}
 

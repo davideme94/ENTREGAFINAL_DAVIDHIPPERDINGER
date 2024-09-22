@@ -4,14 +4,14 @@ from .models import Camiseta, Botin, Short
 class CamisetaForm(forms.ModelForm):
     class Meta:
         model = Camiseta
-        fields = '__all__'
+        exclude = ['usuario']  # Excluir el campo usuario
 
 class BotinForm(forms.ModelForm):
     class Meta:
         model = Botin
-        fields = '__all__'
+        exclude = ['usuario']  # Excluir el campo usuario
 
 class ShortsForm(forms.ModelForm):
     class Meta:
         model = Short
-        fields = '__all__'
+        exclude = ['usuario']  # Excluir el campo usuario
