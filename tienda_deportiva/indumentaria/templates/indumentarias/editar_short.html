@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Short</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Editar Short</h1>
+    </header>
+
+    <main>
+        <!-- Formulario para editar el short -->
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Guardar Cambios</button>
+        </form>
+
+        <!-- Botón para cancelar la edición y volver a la lista -->
+        <a href="{% url 'indumentaria_lista' %}"><button>Cancelar</button></a>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Compra y Venta de Indumentaria. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

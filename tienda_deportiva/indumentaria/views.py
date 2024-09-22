@@ -60,9 +60,16 @@ def agregar_shorts(request):
 @login_required
 def editar_camiseta(request, id):
     camiseta = get_object_or_404(Camiseta, id=id)
-    if request.user != camiseta.usuario and not request.user.is_superuser:
+
+    # Si la camiseta no tiene usuario, solo un superusuario puede editarla
+    if camiseta.usuario is None:
+        if not request.user.is_superuser:
+            return HttpResponseForbidden("Solo un superusuario puede editar este artículo.")
+
+    # Si la camiseta tiene usuario, verificar permisos
+    elif not request.user.is_superuser and request.user != camiseta.usuario:
         return HttpResponseForbidden("No tienes permiso para editar este artículo.")
-    
+
     if request.method == 'POST':
         form = CamisetaForm(request.POST, request.FILES, instance=camiseta)
         if form.is_valid():
@@ -77,9 +84,16 @@ def editar_camiseta(request, id):
 @login_required
 def editar_botin(request, id):
     botin = get_object_or_404(Botin, id=id)
-    if request.user != botin.usuario and not request.user.is_superuser:
-        return HttpResponseForbidden("No tienes permiso para editar este artículo.")
+
+    # Si el botín no tiene usuario, solo un superusuario puede editarlo
+    if botin.usuario is None:
+        if not request.user.is_superuser:
+            return HttpResponseForbidden("Solo un superusuario puede editar este artículo.")
     
+    # Si el botín tiene usuario, verificar permisos
+    elif not request.user.is_superuser and request.user != botin.usuario:
+        return HttpResponseForbidden("No tienes permiso para editar este artículo.")
+
     if request.method == 'POST':
         form = BotinForm(request.POST, request.FILES, instance=botin)
         if form.is_valid():
@@ -87,16 +101,23 @@ def editar_botin(request, id):
             return redirect('indumentaria_lista')
     else:
         form = BotinForm(instance=botin)
-    
+
     return render(request, 'indumentarias/editar_botin.html', {'form': form})
 
 # Vista para editar un short
 @login_required
 def editar_short(request, id):
     short = get_object_or_404(Short, id=id)
-    if request.user != short.usuario and not request.user.is_superuser:
-        return HttpResponseForbidden("No tienes permiso para editar este artículo.")
+
+    # Si el short no tiene usuario, solo un superusuario puede editarlo
+    if short.usuario is None:
+        if not request.user.is_superuser:
+            return HttpResponseForbidden("Solo un superusuario puede editar este artículo.")
     
+    # Si el short tiene usuario, verificar permisos
+    elif not request.user.is_superuser and request.user != short.usuario:
+        return HttpResponseForbidden("No tienes permiso para editar este artículo.")
+
     if request.method == 'POST':
         form = ShortsForm(request.POST, request.FILES, instance=short)
         if form.is_valid():
@@ -104,16 +125,18 @@ def editar_short(request, id):
             return redirect('indumentaria_lista')
     else:
         form = ShortsForm(instance=short)
-    
+
     return render(request, 'indumentarias/editar_short.html', {'form': form})
 
 # Vista para eliminar una camiseta
 @login_required
 def eliminar_camiseta(request, id):
     camiseta = get_object_or_404(Camiseta, id=id)
-    if request.user != camiseta.usuario and not request.user.is_superuser:
+
+    # Permitir que los superusuarios siempre puedan eliminar
+    if not request.user.is_superuser and request.user != camiseta.usuario:
         return HttpResponseForbidden("No tienes permiso para eliminar este artículo.")
-    
+
     if request.method == 'POST':
         camiseta.delete()
         return redirect('indumentaria_lista')
@@ -124,9 +147,11 @@ def eliminar_camiseta(request, id):
 @login_required
 def eliminar_botin(request, id):
     botin = get_object_or_404(Botin, id=id)
-    if request.user != botin.usuario and not request.user.is_superuser:
+
+    # Permitir que los superusuarios siempre puedan eliminar
+    if not request.user.is_superuser and request.user != botin.usuario:
         return HttpResponseForbidden("No tienes permiso para eliminar este artículo.")
-    
+
     if request.method == 'POST':
         botin.delete()
         return redirect('indumentaria_lista')
@@ -137,9 +162,11 @@ def eliminar_botin(request, id):
 @login_required
 def eliminar_short(request, id):
     short = get_object_or_404(Short, id=id)
-    if request.user != short.usuario and not request.user.is_superuser:
+
+    # Permitir que los superusuarios siempre puedan eliminar
+    if not request.user.is_superuser and request.user != short.usuario:
         return HttpResponseForbidden("No tienes permiso para eliminar este artículo.")
-    
+
     if request.method == 'POST':
         short.delete()
         return redirect('indumentaria_lista')
